@@ -54,7 +54,7 @@ export default function Dashboard() {
   // 進行中の案件取得
   async function fetchInProgressSales() {
     try {
-      const { data, error } = await supabase
+      const { data: inProgressData, error } = await supabase
         .from('sales')
         .select(`
           id,
@@ -72,7 +72,7 @@ export default function Dashboard() {
         
       if (error) throw error;
       
-      setInProgressSales(data || []);
+      setInProgressSales(inProgressData || []);
     } catch (err) {
       console.error('Error fetching in-progress sales:', err);
     }
@@ -131,7 +131,7 @@ export default function Dashboard() {
           total_amount,
           sale_status,
           customer:customer_id(id, name),
-          user:user_id(id, name),
+          user_name,
           sale_type:sale_type_id(id, name)
         `)
         .order('sale_date', { ascending: false })
@@ -142,7 +142,7 @@ export default function Dashboard() {
       // 外注コスト情報を追加
       const recentSaleIds = recentData?.map(sale => sale.id) || [];
       let saleOutsourceCosts = {};
-      
+
       if (recentSaleIds.length > 0) {
         const { data: recentCostData, error: recentCostError } = await supabase
           .from('outsource_costs')
@@ -172,11 +172,12 @@ export default function Dashboard() {
       const formattedRecentSales = recentData?.map(sale => {
         // 該当する売上の外注コスト合計を計算
         const saleOutsourceCost = saleOutsourceCosts[sale.id]?.reduce((sum, cost) => sum + cost.amount, 0) || 0;
-        
+  
         return {
           id: sale.id,
           date: sale.sale_date,
           customerName: sale.customer?.name || '',
+          userName: sale.user_name || '-', // 担当者名を追加
           outsourceNames: saleOutsourceCosts[sale.id]?.map(cost => cost.outsourceName) || [],
           totalAmount: sale.total_amount || 0,
           outsourceCost: saleOutsourceCost,
@@ -369,9 +370,9 @@ export default function Dashboard() {
         </div>
         
         {/* 下部コンテンツ */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* 最近の売上 */}
-          <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* 最近の売上 - 3/5の幅 */}
+          <div className="lg:col-span-3 bg-white rounded-lg shadow overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b">
               <h2 className="text-xl font-semibold">最近の売上</h2>
               <Link href="/sales/new" className="text-blue-600 hover:text-blue-800">
@@ -379,6 +380,7 @@ export default function Dashboard() {
               </Link>
             </div>
             
+            {/* 内容は以前と同じ */}
             {isLoading && (
               <div className="p-6 text-center text-gray-500">
                 読み込み中...
@@ -396,22 +398,25 @@ export default function Dashboard() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         日付
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         顧客名
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        担当者
+                      </th>
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         種類
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         金額
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         外注費
                       </th>
-                      <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         進捗
                       </th>
                     </tr>
@@ -419,10 +424,10 @@ export default function Dashboard() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {recentSales.map((sale) => (
                       <tr key={sale.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm">
                           {new Date(sale.date).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4 text-sm">
+                        <td className="px-4 py-3 text-sm whitespace-nowrap">
                           <div>
                             {sale.customerName}
                           </div>
@@ -432,19 +437,22 @@ export default function Dashboard() {
                             </div>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
+                          {sale.userName}
+                        </td>
+                        <td className="px-4 py-3 whitespace-nowrap text-sm">
                           {sale.saleType}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right">
                           ¥{sale.totalAmount.toLocaleString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right">
                           ¥{sale.outsourceCost.toLocaleString()}
                           <div className="text-xs text-gray-500">
                             利益: ¥{sale.profit.toLocaleString()}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                        <td className="px-4 py-3 whitespace-nowrap text-center">
                           <span 
                             className={`px-2 py-1 text-xs rounded-full ${
                               sale.status === '完了' ? 'bg-green-100 text-green-800' :
@@ -464,8 +472,8 @@ export default function Dashboard() {
             )}
           </div>
           
-          {/* 進捗管理ボード */}
-          <div className="bg-white rounded-lg shadow overflow-hidden">
+          {/* 進捗管理ボード - 2/5の幅 */}
+          <div className="lg:col-span-2 bg-white rounded-lg shadow overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b">
               <h2 className="text-xl font-semibold">進捗管理ボード</h2>
               <Link href="/sales/new" className="text-blue-600 hover:text-blue-800">
@@ -473,6 +481,7 @@ export default function Dashboard() {
               </Link>
             </div>
             
+            {/* 内容は以前と同じだが、テーブルセルの余白を調整 */}
             {isLoading && (
               <div className="p-6 text-center text-gray-500">
                 読み込み中...
@@ -490,19 +499,19 @@ export default function Dashboard() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         顧客名
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         担当者
                       </th>
-                      <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         納品日
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         金額
                       </th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         操作
                       </th>
                     </tr>
@@ -513,13 +522,13 @@ export default function Dashboard() {
                         key={sale.id} 
                         className={`hover:bg-gray-50 ${isOverdue(sale.delivery_date) ? 'bg-red-50' : ''}`}
                       >
-                        <td className="px-6 py-4 text-sm text-gray-900">
+                        <td className="px-3 py-3 text-sm text-gray-900 whitespace-nowrap">
                           {sale.customer?.name || '不明'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-900">
                           {sale.user_name || '-'}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm">
+                        <td className="px-3 py-3 whitespace-nowrap text-sm">
                           {sale.delivery_date ? (
                             <span className={isOverdue(sale.delivery_date) ? 'text-red-600 font-medium' : 'text-gray-900'}>
                               {new Date(sale.delivery_date).toLocaleDateString()}
@@ -529,14 +538,16 @@ export default function Dashboard() {
                             <span className="text-gray-500">未設定</span>
                           )}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                        <td className="px-3 py-3 whitespace-nowrap text-sm text-gray-900 text-right">
                           ¥{sale.total_amount?.toLocaleString()}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                          <Link href="/sales" className="text-blue-600 hover:text-blue-900 mr-4">
-                            編集
-                          </Link>
-                          <CompleteSaleButton saleId={sale.id} onComplete={handleSaleComplete} />
+                        <td className="px-3 py-3 whitespace-nowrap text-sm text-right">
+                          <div className="flex justify-end space-x-2">
+                            <Link href="/sales" className="text-blue-600 hover:text-blue-900">
+                              編集
+                            </Link>
+                            <CompleteSaleButton saleId={sale.id} onComplete={handleSaleComplete} />
+                          </div>
                         </td>
                       </tr>
                     ))}
