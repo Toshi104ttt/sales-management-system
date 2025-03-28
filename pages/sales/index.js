@@ -942,127 +942,133 @@ export default function SalesManagement() {
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th 
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                      onClick={() => handleSort('sale_date')}
-                    >
-                      <div className="flex items-center">
-                        日付
-                        {sortField === 'sale_date' && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                          </svg>
-                        )}
-                      </div>
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                      onClick={() => handleSort('delivery_date')}
-                    >
-                      <div className="flex items-center">
-                        納品日
-                        {sortField === 'delivery_date' && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                          </svg>
-                        )}
-                      </div>
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      顧客
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      種類
-                    </th>
-                    <th 
-                      className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
-                      onClick={() => handleSort('total_amount')}
-                    >
-                      <div className="flex items-center justify-end">
-                        金額
-                        {sortField === 'total_amount' && (
-                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                          </svg>
-                        )}
-                      </div>
-                    </th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      ステータス
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      操作
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {sales.map((sale) => (
-                    <tr 
-                      key={sale.id} 
-                      className={`hover:bg-gray-50 ${sale.sale_status === '進行中' && isOverdue(sale.delivery_date) ? 'bg-red-50' : ''}`}
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {new Date(sale.sale_date).toLocaleDateString()}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm">
-                        {sale.delivery_date ? (
-                          <span className={
-                            sale.sale_status === '進行中' && isOverdue(sale.delivery_date) 
-                              ? 'text-red-600 font-medium' 
-                              : 'text-gray-900'
-                          }>
-                            {new Date(sale.delivery_date).toLocaleDateString()}
-                            {sale.sale_status === '進行中' && isOverdue(sale.delivery_date) && ' (遅延)'}
-                          </span>
-                        ) : (
-                          <span className="text-gray-500">-</span>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 text-sm text-gray-900">
-                        <div>
-                          {sale.customer?.name || '不明'}
-                        </div>
-                        {sale.outsourceCosts.length > 0 && (
-                          <div className="text-xs text-gray-500 mt-1">
-                            外注: {sale.outsourceCosts.map(cost => cost.outsourceName).join(', ')}
-                          </div>
-                        )}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                        {sale.sale_type?.name || '未分類'}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
-                        ¥{sale.total_amount.toLocaleString()}
-                        <div className="text-xs text-gray-500">
-                          利益: ¥{sale.profit.toLocaleString()}
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-center">
-                        <span className={`px-2 py-1 text-xs rounded-full ${getStatusStyle(sale.sale_status)}`}>
-                          {sale.sale_status || '-'}
+              <thead className="bg-gray-50">
+                <tr>
+                  <th 
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    onClick={() => handleSort('sale_date')}
+                  >
+                    <div className="flex items-center">
+                      日付
+                      {sortField === 'sale_date' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                      )}
+                    </div>
+                  </th>
+                  <th 
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    onClick={() => handleSort('delivery_date')}
+                  >
+                    <div className="flex items-center">
+                      納品日
+                      {sortField === 'delivery_date' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                      )}
+                    </div>
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    顧客
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    担当者
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    種類
+                  </th>
+                  <th 
+                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer"
+                    onClick={() => handleSort('total_amount')}
+                  >
+                    <div className="flex items-center justify-end">
+                      金額
+                      {sortField === 'total_amount' && (
+                        <svg xmlns="http://www.w3.org/2000/svg" className={`h-4 w-4 ml-1 ${sortOrder === 'asc' ? 'transform rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                      )}
+                    </div>
+                  </th>
+                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    ステータス
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    操作
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {sales.map((sale) => (
+                  <tr 
+                    key={sale.id} 
+                    className={`hover:bg-gray-50 ${sale.sale_status === '進行中' && isOverdue(sale.delivery_date) ? 'bg-red-50' : ''}`}
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {new Date(sale.sale_date).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      {sale.delivery_date ? (
+                        <span className={
+                          sale.sale_status === '進行中' && isOverdue(sale.delivery_date) 
+                            ? 'text-red-600 font-medium' 
+                            : 'text-gray-900'
+                        }>
+                          {new Date(sale.delivery_date).toLocaleDateString()}
+                          {sale.sale_status === '進行中' && isOverdue(sale.delivery_date) && ' (遅延)'}
                         </span>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                        <div className="flex justify-end space-x-2">
-                          <button
-                            onClick={() => startEdit(sale)}
-                            className="text-blue-600 hover:text-blue-900"
-                          >
-                            編集
-                          </button>
-                          <button
-                            onClick={() => deleteSale(sale.id)}
-                            className="text-red-600 hover:text-red-900"
-                          >
-                            削除
-                          </button>
+                      ) : (
+                        <span className="text-gray-500">-</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-900">
+                      <div>
+                        {sale.customer?.name || '不明'}
+                      </div>
+                      {sale.outsourceCosts.length > 0 && (
+                        <div className="text-xs text-gray-500 mt-1">
+                          外注: {sale.outsourceCosts.map(cost => cost.outsourceName).join(', ')}
                         </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                      )}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {sale.user_name || '-'}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {sale.sale_type?.name || '未分類'}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                      ¥{sale.total_amount.toLocaleString()}
+                      <div className="text-xs text-gray-500">
+                        利益: ¥{sale.profit.toLocaleString()}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center">
+                      <span className={`px-2 py-1 text-xs rounded-full ${getStatusStyle(sale.sale_status)}`}>
+                        {sale.sale_status || '-'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                      <div className="flex justify-end space-x-2">
+                        <button
+                          onClick={() => startEdit(sale)}
+                          className="text-blue-600 hover:text-blue-900"
+                        >
+                          編集
+                        </button>
+                        <button
+                          onClick={() => deleteSale(sale.id)}
+                          className="text-red-600 hover:text-red-900"
+                        >
+                          削除
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
               </table>
             </div>
           )}
