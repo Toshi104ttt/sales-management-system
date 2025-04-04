@@ -561,7 +561,7 @@ export default function SalesManagement() {
                     name="customer_id"
                     value={editingSale.customer_id}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   >
                     <option value="">選択してください</option>
@@ -584,7 +584,7 @@ export default function SalesManagement() {
                     value={editingSale.user_name}
                     onChange={handleEditChange}
                     placeholder="担当者名を入力"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 
@@ -598,7 +598,7 @@ export default function SalesManagement() {
                     name="sale_date"
                     value={editingSale.sale_date}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required
                   />
                 </div>
@@ -613,7 +613,7 @@ export default function SalesManagement() {
                     name="delivery_date"
                     value={editingSale.delivery_date || ''}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 
@@ -631,7 +631,7 @@ export default function SalesManagement() {
                       name="total_amount"
                       value={editingSale.total_amount}
                       onChange={handleEditChange}
-                      className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full pl-8 px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="0"
                       min="0"
                       required
@@ -648,7 +648,7 @@ export default function SalesManagement() {
                     name="sale_status"
                     value={editingSale.sale_status}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="進行中">進行中</option>
                     <option value="完了">完了</option>
@@ -666,7 +666,7 @@ export default function SalesManagement() {
                     name="sale_type_id"
                     value={editingSale.sale_type_id}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">選択してください</option>
                     {saleTypes.map((type) => (
@@ -686,7 +686,7 @@ export default function SalesManagement() {
                     name="outsource_id"
                     value={editingSale.outsource_id}
                     onChange={handleEditChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">選択してください</option>
                     {outsources.map((outsource) => (
@@ -711,7 +711,7 @@ export default function SalesManagement() {
                       name="outsource_amount"
                       value={editingSale.outsource_amount}
                       onChange={handleEditChange}
-                      className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full pl-8 px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                       placeholder="0"
                       min="0"
                     />
@@ -729,7 +729,7 @@ export default function SalesManagement() {
                   value={editingSale.notes}
                   onChange={handleEditChange}
                   rows="3"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="備考を入力"
                 ></textarea>
               </div>
@@ -787,7 +787,7 @@ export default function SalesManagement() {
                     name="startDate"
                     value={filters.startDate}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -799,7 +799,7 @@ export default function SalesManagement() {
                     name="endDate"
                     value={filters.endDate}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -811,7 +811,7 @@ export default function SalesManagement() {
                     name="startDeliveryDate"
                     value={filters.startDeliveryDate}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -823,7 +823,7 @@ export default function SalesManagement() {
                     name="endDeliveryDate"
                     value={filters.endDeliveryDate}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -836,7 +836,7 @@ export default function SalesManagement() {
                     value={filters.customerName}
                     onChange={handleFilterChange}
                     placeholder="顧客名で検索"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -847,7 +847,7 @@ export default function SalesManagement() {
                     name="saleTypeId"
                     value={filters.saleTypeId}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">すべて</option>
                     {saleTypes.map((type) => (
@@ -867,7 +867,7 @@ export default function SalesManagement() {
                     value={filters.minAmount}
                     onChange={handleFilterChange}
                     placeholder="最小金額"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -880,7 +880,7 @@ export default function SalesManagement() {
                     value={filters.maxAmount}
                     onChange={handleFilterChange}
                     placeholder="最大金額"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
@@ -891,7 +891,7 @@ export default function SalesManagement() {
                     name="status"
                     value={filters.status}
                     onChange={handleFilterChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">すべて</option>
                     <option value="進行中">進行中</option>

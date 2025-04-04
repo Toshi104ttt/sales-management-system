@@ -229,7 +229,7 @@ export default function SaleTypes() {
                 <input
                   type="text"
                   placeholder="例: YouTube台本製作"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={editMode ? editingSaleType.name : newSaleType.name}
                   onChange={(e) => editMode
                     ? setEditingSaleType({...editingSaleType, name: e.target.value})
@@ -245,7 +245,7 @@ export default function SaleTypes() {
                 <input
                   type="text"
                   placeholder="説明を入力"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={editMode ? editingSaleType.description : newSaleType.description}
                   onChange={(e) => editMode
                     ? setEditingSaleType({...editingSaleType, description: e.target.value})

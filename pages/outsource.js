@@ -316,7 +316,7 @@ export default function OutsourceManagement() {
                 <input
                   type="text"
                   placeholder="例: 株式会社A制作"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={editMode ? editingOutsource.name : newOutsource.name}
                   onChange={(e) => editMode
                     ? setEditingOutsource({...editingOutsource, name: e.target.value})
@@ -332,7 +332,7 @@ export default function OutsourceManagement() {
                 <input
                   type="email"
                   placeholder="example@example.com"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={editMode ? editingOutsource.email : newOutsource.email}
                   onChange={(e) => editMode
                     ? setEditingOutsource({...editingOutsource, email: e.target.value})
@@ -346,7 +346,7 @@ export default function OutsourceManagement() {
                 </label>
                 <textarea
                   placeholder="備考を入力"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   rows="3"
                   value={editMode ? editingOutsource.notes : newOutsource.notes}
                   onChange={(e) => editMode
