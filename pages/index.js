@@ -262,7 +262,7 @@ export default function Dashboard() {
         )}
         
         {/* 上部サマリーカード */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 text-gray-800 gap-6 mb-8">
           <SummaryCard
             title="今月の売上"
             value={`¥${monthlySales.toLocaleString()}`}
@@ -271,7 +271,7 @@ export default function Dashboard() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             }
-            color="bg-green-100 text-green-500"
+            color="bg-green-100 text-green-700"
           />
           <SummaryCard
             title="今月の外注費"
@@ -298,11 +298,11 @@ export default function Dashboard() {
         {/* 月次売上推移グラフ */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-semibold">月次推移 ({year}年)</h2>
+            <h2 className="text-xl font-semibold text-gray-800">月次推移 ({year}年)</h2>
             <select
               value={year}
               onChange={(e) => setYear(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border text-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="2024">2024年</option>
               <option value="2025">2025年</option>
@@ -374,7 +374,7 @@ export default function Dashboard() {
           {/* 最近の売上 - 3/5の幅 */}
           <div className="lg:col-span-3 bg-white rounded-lg shadow overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b">
-              <h2 className="text-xl font-semibold">最近の売上</h2>
+              <h2 className="text-xl font-semibold text-gray-800">最近の売上</h2>
               <Link href="/sales/new" className="text-blue-600 hover:text-blue-800">
                 + 新規登録
               </Link>
@@ -398,25 +398,25 @@ export default function Dashboard() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         日付
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         顧客名
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         担当者
                       </th>
-                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         種類
                       </th>
-                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                         金額
                       </th>
-                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                         外注費
                       </th>
-                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-4 py-3 text-center text-xs font-medium text-gray-800 uppercase tracking-wider">
                         進捗
                       </th>
                     </tr>
@@ -424,10 +424,10 @@ export default function Dashboard() {
                   <tbody className="bg-white divide-y divide-gray-200">
                     {recentSales.map((sale) => (
                       <tr key={sale.id} className="hover:bg-gray-50">
-                        <td className="px-4 py-3 whitespace-nowrap text-sm">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-800">
                           {new Date(sale.date).toLocaleDateString()}
                         </td>
-                        <td className="px-4 py-3 text-sm whitespace-nowrap">
+                        <td className="px-4 py-3 text-sm whitespace-nowrap text-gray-800">
                           <div>
                             {sale.customerName}
                           </div>
@@ -440,13 +440,13 @@ export default function Dashboard() {
                         <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-900">
                           {sale.userName}
                         </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-sm">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-800">
                           {sale.saleType}
                         </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-800">
                           ¥{sale.totalAmount.toLocaleString()}
                         </td>
-                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right">
+                        <td className="px-4 py-3 whitespace-nowrap text-sm text-right text-gray-800">
                           ¥{sale.outsourceCost.toLocaleString()}
                           <div className="text-xs text-gray-500">
                             利益: ¥{sale.profit.toLocaleString()}
@@ -475,7 +475,7 @@ export default function Dashboard() {
           {/* 進捗管理ボード - 2/5の幅 */}
           <div className="lg:col-span-2 bg-white rounded-lg shadow overflow-hidden">
             <div className="flex justify-between items-center p-6 border-b">
-              <h2 className="text-xl font-semibold">進捗管理ボード</h2>
+              <h2 className="text-xl font-semibold text-gray-800">進捗管理ボード</h2>
               <Link href="/sales/new" className="text-blue-600 hover:text-blue-800">
                 + 新規案件
               </Link>
@@ -483,13 +483,13 @@ export default function Dashboard() {
             
             {/* 内容は以前と同じだが、テーブルセルの余白を調整 */}
             {isLoading && (
-              <div className="p-6 text-center text-gray-500">
+              <div className="p-6 text-center text-gray-800">
                 読み込み中...
               </div>
             )}
             
             {!isLoading && inProgressSales.length === 0 && (
-              <div className="p-6 text-center text-gray-500">
+              <div className="p-6 text-center text-gray-800">
                 進行中の案件はありません
               </div>
             )}
@@ -499,19 +499,19 @@ export default function Dashboard() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         顧客名
                       </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         担当者
                       </th>
-                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                         納品日
                       </th>
-                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                         金額
                       </th>
-                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      <th className="px-3 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                         操作
                       </th>
                     </tr>
