@@ -523,7 +523,7 @@ export default function SalesManagement() {
     <Layout title="売上管理">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">売上管理</h1>
+          <h1 className="text-2xl font-bold text-gray-800">売上管理</h1>
           <Link href="/sales/new" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -549,7 +549,7 @@ export default function SalesManagement() {
         {/* 編集フォーム - 編集モード時のみ表示 */}
         {editMode && editingSale && (
           <div className="bg-white rounded-lg shadow p-6 mb-8">
-            <h2 className="text-xl font-semibold mb-4">売上情報の編集</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">売上情報の編集</h2>
             <form onSubmit={updateSale}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* 顧客選択 */}
@@ -761,7 +761,7 @@ export default function SalesManagement() {
             className="flex justify-between items-center cursor-pointer"
             onClick={() => setIsFilterExpanded(!isFilterExpanded)}
           >
-            <h2 className="text-lg font-semibold">検索・フィルター</h2>
+            <h2 className="text-lg font-semibold text-gray-800">検索・フィルター</h2>
             <div className="text-gray-500">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -924,7 +924,7 @@ export default function SalesManagement() {
         {/* 売上一覧表 */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
           <div className="px-6 py-4 border-b">
-            <h2 className="text-lg font-semibold">売上一覧</h2>
+            <h2 className="text-lg font-semibold text-gray-800">売上一覧</h2>
           </div>
           
           {isLoading ? (

@@ -299,14 +299,14 @@ export default function MonthlyReport() {
     <Layout title="月次レポート">
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold">月次レポート</h1>
+          <h1 className="text-2xl font-bold text-gray-800">月次レポート</h1>
           
           {/* 年月選択 */}
           <div className="flex space-x-2">
             <select
               value={year}
               onChange={e => setYear(parseInt(e.target.value))}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {yearOptions.map(y => (
                 <option key={y} value={y}>{y}年</option>
@@ -315,7 +315,7 @@ export default function MonthlyReport() {
             <select
               value={month}
               onChange={e => setMonth(parseInt(e.target.value))}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 text-gray-800 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {Array.from({ length: 12 }, (_, i) => i + 1).map(m => (
                 <option key={m} value={m}>{m}月</option>
@@ -333,7 +333,7 @@ export default function MonthlyReport() {
         
         {isLoading ? (
           <div className="flex justify-center items-center h-64">
-            <svg className="animate-spin h-8 w-8 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin h-8 w-8 text-gray-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -343,23 +343,23 @@ export default function MonthlyReport() {
             {/* 月間サマリーカード */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider">月間売上</h2>
+                <h2 className="text-sm font-medium text-gray-800 uppercase tracking-wider">月間売上</h2>
                 <p className="mt-2 text-3xl font-semibold text-gray-900">¥{monthlySummary.totalSales.toLocaleString()}</p>
-                <p className="mt-1 text-sm text-gray-500">取引件数: {monthlySummary.salesCount}件</p>
+                <p className="mt-1 text-sm text-gray-800">取引件数: {monthlySummary.salesCount}件</p>
               </div>
               
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider">外注費</h2>
+                <h2 className="text-sm font-medium text-gray-800 uppercase tracking-wider">外注費</h2>
                 <p className="mt-2 text-3xl font-semibold text-gray-900">¥{monthlySummary.totalOutsourceCost.toLocaleString()}</p>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-800">
                   売上に対する比率: {(monthlySummary.totalSales > 0 ? (monthlySummary.totalOutsourceCost / monthlySummary.totalSales * 100) : 0).toFixed(1)}%
                 </p>
               </div>
               
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-sm font-medium text-gray-500 uppercase tracking-wider">利益（売上 - 外注費）</h2>
+                <h2 className="text-sm font-medium text-gray-800 uppercase tracking-wider">利益（売上 - 外注費）</h2>
                 <p className="mt-2 text-3xl font-semibold text-gray-900">¥{monthlySummary.totalProfit.toLocaleString()}</p>
-                <p className="mt-1 text-sm text-gray-500">
+                <p className="mt-1 text-sm text-gray-800">
                   売上に対する比率: {(monthlySummary.totalSales > 0 ? (monthlySummary.totalProfit / monthlySummary.totalSales * 100) : 0).toFixed(1)}%
                 </p>
               </div>
@@ -367,7 +367,7 @@ export default function MonthlyReport() {
             
             {/* 年間トレンドグラフ */}
             <div className="bg-white rounded-lg shadow p-6 mb-8">
-              <h2 className="text-lg font-semibold mb-4">{year}年 月次売上・外注費・利益推移</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4">{year}年 月次売上・外注費・利益推移</h2>
               <div className="h-80">
                 <Line
                   data={{
@@ -428,7 +428,7 @@ export default function MonthlyReport() {
             
             {/* 日次売上グラフ */}
             <div className="bg-white rounded-lg shadow p-6 mb-8">
-              <h2 className="text-lg font-semibold mb-4">{year}年{month}月 日次売上・外注費・利益</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4">{year}年{month}月 日次売上・外注費・利益</h2>
               <div className="h-80">
                 <Bar
                   data={{
@@ -494,7 +494,7 @@ export default function MonthlyReport() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               {/* 売上種類内訳 */}
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-lg font-semibold mb-4">売上種類内訳</h2>
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">売上種類内訳</h2>
                 {typeBreakdown.length > 0 ? (
                   <div className="h-80 flex items-center justify-center">
                     <Pie
@@ -531,7 +531,7 @@ export default function MonthlyReport() {
                     />
                   </div>
                 ) : (
-                  <div className="h-80 flex items-center justify-center text-gray-500">
+                  <div className="h-80 flex items-center justify-center text-gray-800">
                     データがありません
                   </div>
                 )}
@@ -539,7 +539,7 @@ export default function MonthlyReport() {
               
               {/* 顧客別売上 */}
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-lg font-semibold mb-4">顧客別売上 (上位5件)</h2>
+                <h2 className="text-lg font-semibold text-gray-800 mb-4">顧客別売上 (上位5件)</h2>
                 {customerBreakdown.length > 0 ? (
                   <div className="h-80">
                     <Bar
@@ -584,7 +584,7 @@ export default function MonthlyReport() {
                     />
                   </div>
                 ) : (
-                  <div className="h-80 flex items-center justify-center text-gray-500">
+                  <div className="h-80 flex items-center justify-center text-gray-800">
                     データがありません
                   </div>
                 )}
@@ -593,19 +593,19 @@ export default function MonthlyReport() {
             
             {/* 外注コスト内訳 */}
             <div className="bg-white rounded-lg shadow p-6 mb-8">
-              <h2 className="text-lg font-semibold mb-4">外注費内訳</h2>
+              <h2 className="text-lg font-semibold text-gray-800 mb-4">外注費内訳</h2>
               {outsourceCosts.length > 0 ? (
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                           外注先
                         </th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                           費用
                         </th>
-                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                           比率
                         </th>
                       </tr>
@@ -645,7 +645,7 @@ export default function MonthlyReport() {
                   </table>
                 </div>
               ) : (
-                <div className="p-4 text-center text-gray-500">
+                <div className="p-4 text-center text-gray-800">
                   外注費データがありません
                 </div>
               )}

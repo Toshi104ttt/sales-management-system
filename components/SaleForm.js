@@ -252,7 +252,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
   
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
-      <h1 className="text-2xl font-semibold mb-6">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6">
         {editMode ? '売上情報の編集' : '新規売上登録'}
       </h1>
       
@@ -274,14 +274,14 @@ export default function SaleForm({ editMode = false, saleId = null }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 顧客選択 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               顧客 <span className="text-red-500">*</span>
             </label>
             <select
               name="customer_id"
               value={sale.customer_id}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             >
               <option value="">選択してください</option>
@@ -295,7 +295,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
           
           {/* 担当者入力 (テキストフィールドに変更) */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               担当者
             </label>
             <input
@@ -304,13 +304,13 @@ export default function SaleForm({ editMode = false, saleId = null }) {
               value={sale.user_name}
               onChange={handleChange}
               placeholder="担当者名を入力"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           
           {/* 売上日 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               売上日 <span className="text-red-500">*</span>
             </label>
             <input
@@ -318,14 +318,14 @@ export default function SaleForm({ editMode = false, saleId = null }) {
               name="sale_date"
               value={sale.sale_date}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
 
           {/* 納品日 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               納品日
             </label>
             <input
@@ -333,13 +333,13 @@ export default function SaleForm({ editMode = false, saleId = null }) {
               name="delivery_date"
               value={sale.delivery_date || ''}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
           
           {/* 売上金額 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               売上金額 <span className="text-red-500">*</span>
             </label>
             <div className="relative">
@@ -351,7 +351,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
                 name="total_amount"
                 value={sale.total_amount}
                 onChange={handleChange}
-                className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full pl-8 px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="0"
                 min="0"
                 required
@@ -361,14 +361,14 @@ export default function SaleForm({ editMode = false, saleId = null }) {
           
           {/* ステータス */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               ステータス
             </label>
             <select
               name="sale_status"
               value={sale.sale_status}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="進行中">進行中</option>
               <option value="完了">完了</option>
@@ -379,14 +379,14 @@ export default function SaleForm({ editMode = false, saleId = null }) {
           
           {/* 売上種類 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               売上種類
             </label>
             <select
               name="sale_type_id"
               value={sale.sale_type_id}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               <option value="">選択してください</option>
               {saleTypes.map((type) => (
@@ -399,7 +399,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
           
           {/* 問い合わせ元 */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-800 mb-1">
               問い合わせ元
             </label>
             <input
@@ -407,7 +407,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
               name="source"
               value={sale.source}
               onChange={handleChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="例: 紹介、ウェブサイト等"
             />
           </div>
@@ -415,18 +415,19 @@ export default function SaleForm({ editMode = false, saleId = null }) {
         
         {/* 外注情報 */}
         <div className="mt-8 border-t pt-6">
-          <h2 className="text-xl font-semibold mb-4">外注情報</h2>
+          <h2 className="text-xl font-semibold text-gray-800
+           mb-4">外注情報</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* 外注先選択 */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-800 mb-1">
                 外注先
               </label>
               <select
                 name="outsource_id"
                 value={outsourceCost.outsource_id}
                 onChange={handleOutsourceCostChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">選択してください</option>
                 {outsources.map((outsource) => (
@@ -439,7 +440,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
             
             {/* 外注コスト */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-800 mb-1">
                 外注費用
               </label>
               <div className="relative">
@@ -451,7 +452,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
                   name="amount"
                   value={outsourceCost.amount}
                   onChange={handleOutsourceCostChange}
-                  className="w-full pl-8 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-8 px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="0"
                   min="0"
                 />
@@ -460,7 +461,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
             
             {/* 外注内容 */}
             <div className="md:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-800 mb-1">
                 外注内容
               </label>
               <input
@@ -468,7 +469,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
                 name="description"
                 value={outsourceCost.description}
                 onChange={handleOutsourceCostChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 placeholder="例: YouTube台本作成等"
               />
             </div>
@@ -477,7 +478,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
         
         {/* 備考 */}
         <div className="mt-8">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-800 mb-1">
             備考
           </label>
           <textarea
@@ -485,7 +486,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
             value={sale.notes}
             onChange={handleChange}
             rows="4"
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 text-gray-500 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="備考を入力してください"
           ></textarea>
         </div>
@@ -495,7 +496,7 @@ export default function SaleForm({ editMode = false, saleId = null }) {
           <button
             type="button"
             onClick={() => router.back()}
-            className="mr-4 px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+            className="mr-4 px-4 py-2 border border-gray-300 rounded-md text-gray-800 hover:bg-gray-50"
           >
             キャンセル
           </button>

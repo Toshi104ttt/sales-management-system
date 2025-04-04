@@ -199,7 +199,7 @@ export default function SaleTypes() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">売上種類管理</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">売上種類管理</h1>
         
         {/* エラーメッセージ */}
         {error && (
@@ -217,7 +217,7 @@ export default function SaleTypes() {
         
         {/* 売上種類追加/編集フォーム */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">
             {editMode ? '売上種類の編集' : '新規売上種類の追加'}
           </h2>
           <form onSubmit={editMode ? updateSaleType : addSaleType}>
@@ -288,28 +288,28 @@ export default function SaleTypes() {
         
         {/* 売上種類一覧 */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
-          <h2 className="text-xl font-semibold p-6 border-b">売上種類一覧</h2>
+          <h2 className="text-xl font-semibold p-6 border-b border-gray-200 text-gray-800">売上種類一覧</h2>
           
           {isLoading && <div className="p-4 text-center">読み込み中...</div>}
           
           {!isLoading && saleTypes.length === 0 && (
-            <div className="p-4 text-center text-gray-500">
+            <div className="p-4 text-center text-gray-800">
               売上種類が登録されていません
             </div>
           )}
           
           {!isLoading && saleTypes.length > 0 && (
             <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
+              <table className="min-w-full divide-y divide-gray-200 text-gray-800">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       種類名
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       説明
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                       操作
                     </th>
                   </tr>
@@ -320,7 +320,7 @@ export default function SaleTypes() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         {type.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                         {type.description || '-'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right">

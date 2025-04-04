@@ -253,7 +253,7 @@ export default function CustomerManagement() {
   return (
     <Layout title="顧客管理">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">顧客管理</h1>
+        <h1 className="text-2xl font-bold text-gray-800 mb-6">顧客管理</h1>
         
         {/* エラーメッセージ */}
         {error && (
@@ -271,7 +271,7 @@ export default function CustomerManagement() {
         
         {/* 顧客追加/編集フォーム */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
             {editMode ? '顧客情報の編集' : '新規顧客登録'}
           </h2>
           <form onSubmit={editMode ? updateCustomer : addCustomer}>
@@ -342,12 +342,12 @@ export default function CustomerManagement() {
         
         {/* 顧客一覧 */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
-          <h2 className="text-xl font-semibold p-6 border-b">顧客一覧</h2>
+          <h2 className="text-xl font-semibold text-gray-800 p-6 border-b border-gray-200">顧客一覧</h2>
           
           {isLoading && <div className="p-4 text-center">読み込み中...</div>}
           
           {!isLoading && customers.length === 0 && (
-            <div className="p-4 text-center text-gray-500">
+            <div className="p-4 text-center text-gray-800">
               顧客が登録されていません
             </div>
           )}
@@ -357,13 +357,13 @@ export default function CustomerManagement() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       顧客名
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       担当者
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                       操作
                     </th>
                   </tr>
@@ -371,10 +371,10 @@ export default function CustomerManagement() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {customers.map((customer) => (
                     <tr key={customer.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                         {customer.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                         {customer.contact_person || '-'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right">

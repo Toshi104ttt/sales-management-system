@@ -286,7 +286,7 @@ export default function OutsourceManagement() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold mb-6">外注管理</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">外注管理</h1>
         
         {/* エラーメッセージ */}
         {error && (
@@ -304,7 +304,7 @@ export default function OutsourceManagement() {
         
         {/* 外注先追加/編集フォーム */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
             {editMode ? '外注先情報の編集' : '新規外注先の登録'}
           </h2>
           <form onSubmit={editMode ? updateOutsource : addOutsource}>
@@ -390,12 +390,12 @@ export default function OutsourceManagement() {
         
         {/* 外注先一覧 */}
         <div className="bg-white rounded-lg shadow overflow-hidden mb-8">
-          <h2 className="text-xl font-semibold p-6 border-b">外注先一覧</h2>
+          <h2 className="text-xl font-semibold p-6 border-b border-gray-200 text-gray-800">外注先一覧</h2>
           
-          {isLoading && <div className="p-4 text-center">読み込み中...</div>}
+          {isLoading && <div className="p-4 text-center text-gray-800">読み込み中...</div>}
           
           {!isLoading && outsources.length === 0 && (
-            <div className="p-4 text-center text-gray-500">
+            <div className="p-4 text-center text-gray-800">
               外注先が登録されていません
             </div>
           )}
@@ -405,13 +405,13 @@ export default function OutsourceManagement() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       外注先名
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       連絡先
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                       操作
                     </th>
                   </tr>
@@ -419,10 +419,10 @@ export default function OutsourceManagement() {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {outsources.map((outsource) => (
                     <tr key={outsource.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                         {outsource.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-800">
                         {outsource.email ? (
                           <div className="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -432,7 +432,7 @@ export default function OutsourceManagement() {
                           </div>
                         ) : '-'}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right">
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-gray-800">
                         <div className="flex justify-end space-x-2">
                           <button
                             onClick={() => startEdit(outsource)}
@@ -460,12 +460,12 @@ export default function OutsourceManagement() {
         
         {/* 外注コスト集計 */}
         <div className="bg-white rounded-lg shadow overflow-hidden">
-          <h2 className="text-xl font-semibold p-6 border-b">外注コスト集計</h2>
+          <h2 className="text-xl font-semibold p-6 border-b border-gray-200 text-gray-800">外注コスト集計</h2>
           
           {isLoading && <div className="p-4 text-center">読み込み中...</div>}
           
           {!isLoading && outsourceCosts.length === 0 && (
-            <div className="p-4 text-center text-gray-500">
+            <div className="p-4 text-center text-gray-800">
               外注コスト情報がありません
             </div>
           )}
@@ -475,21 +475,21 @@ export default function OutsourceManagement() {
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-800 uppercase tracking-wider">
                       外注先
                     </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-800 uppercase tracking-wider">
                       総コスト
                     </th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-800 uppercase tracking-wider">
                       件数
                     </th>
-                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-center text-xs font-medium text-gray-800 uppercase tracking-wider">
                       詳細
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
+                <tbody className="bg-white divide-y divide-gray-200 text-gray-800">
                   {outsourceCosts.map((outsource) => (
                     <React.Fragment key={outsource.id}>
                       <tr className="hover:bg-gray-50">
@@ -522,10 +522,10 @@ export default function OutsourceManagement() {
                                 <table className="min-w-full divide-y divide-gray-200 border border-gray-200">
                                   <thead className="bg-gray-100">
                                     <tr>
-                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">日付</th>
-                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">顧客</th>
-                                      <th className="px-4 py-2 text-right text-xs font-medium text-gray-500">発注金額</th>
-                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-500">内容</th>
+                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-800">日付</th>
+                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-800">顧客</th>
+                                      <th className="px-4 py-2 text-right text-xs font-medium text-gray-800">発注金額</th>
+                                      <th className="px-4 py-2 text-left text-xs font-medium text-gray-800">内容</th>
                                     </tr>
                                   </thead>
                                   <tbody className="bg-white divide-y divide-gray-200">

@@ -21,7 +21,7 @@ export default function Layout({ children, title = '売上管理システム' })
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between h-16">
                 <div className="flex items-center">
-                  <h1 className="text-xl font-semibold">{title}</h1>
+                  <h1 className="text-xl font-semibold text-gray-800">{title}</h1>
                 </div>
                 
                 <div className="flex items-center space-x-4">
@@ -31,13 +31,6 @@ export default function Layout({ children, title = '売上管理システム' })
                     </svg>
                     新規売上登録
                   </Link>
-                  
-                  <button className="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 flex items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                    </svg>
-                    CSVエクスポート
-                  </button>
                 </div>
               </div>
             </div>
